@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sf-smartagency"
-version = "0.1.0"
+version = "0.1.1"
 description = "Signed contracts that say what an AI agent may do, a ledger to suspend and revoke them, and a monitor that enforces them on every action, with SmartFabric pressure limits."
 readme = "README.md"
 requires-python = ">=3.10"

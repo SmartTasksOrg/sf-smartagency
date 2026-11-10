@@ -1,6 +1,6 @@
 # Security policy
 
-SmartAgency 0.1.0 is experimental software. Before release it had one code review by a separate AI
+SmartAgency 0.1.1 is experimental software. Before release it had one code review by a separate AI
 reviewer that did not write the code. It has had no independent human audit.
 [README "Status"](README.md#status) says what is tested and what is not.
 

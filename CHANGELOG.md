@@ -5,6 +5,13 @@ All notable changes to SmartAgency are documented here. Format follows
 
 ## Unreleased
 
+## 0.1.1
+
+### Documentation
+- The README's family section is the shared one now used in every Smart* repository: all 18 tools, the
+  IAIso label each README states, and a diagram whose only arrow between packages is a real dependency
+  (SmartAgency requires SmartFabric). The PyPI page shows it from this release on; the code is unchanged.
+
 ## 0.1.0 — first release as `sf-smartagency`
 
 ### Added

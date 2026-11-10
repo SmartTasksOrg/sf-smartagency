@@ -161,7 +161,7 @@ names. Map them once in the host.
 
 ## Status
 
-- **Version 0.1.0, experimental.** It contains the contract format, Ed25519 signing, the issuer registry,
+- **Version 0.1.1, experimental.** It contains the contract format, Ed25519 signing, the issuer registry,
   the status ledger, the monitor, audit records, a command line and the conformance vectors. It is Python
   only.
 - **Published:** PyPI `sf-smartagency` (see Install). Nothing else is published.
