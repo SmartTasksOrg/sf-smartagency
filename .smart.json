@@ -1,7 +1,7 @@
 {
   "family": "Smart*",
   "tool": "SmartAgency",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "iaiso_section": null,
   "iaiso_section_note": "not assigned yet: the IAIso section labels are an open decision of the maintainers",
   "share_mode": "public",
