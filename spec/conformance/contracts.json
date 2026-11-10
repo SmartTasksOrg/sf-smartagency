@@ -1,0 +1,1888 @@
+{
+ "contracts": [
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "valid",
+   "valid": true
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "missing expires",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "extra": 1,
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "unknown top-level field",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "x",
+      "verb": "teleport"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "unknown verb",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "x",
+      "verb": "x-acme-ping"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "extension verb",
+   "valid": true
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "crm/acc*",
+      "verb": "query"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "wildcard inside a segment",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "crm//x",
+      "verb": "query"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "empty path segment",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2026-09-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "expires before not_before",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01 00:00:00",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "bad time format",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 1.5,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "float limit",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3,
+     "pressure": {
+      "escalation_threshold": "0.9",
+      "release_threshold": "0.8"
+     }
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "pressure release below escalation",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3,
+     "pressure": {
+      "escalation_threshold": 0.8
+     }
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "pressure as a number",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     },
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "duplicate composite names",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "composite of one step",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "supersedes": "ctr-1",
+    "version": "1.0.0"
+   },
+   "name": "supersedes itself",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "rsa:abc",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "issuer not an ed25519 kid",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0"
+   },
+   "name": "bad version",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "no grants",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "crm/../hr",
+      "verb": "query"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "dot-dot segment in a grant",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "crm%2Fhr",
+      "verb": "query"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "percent escape in a grant",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-01-01T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "**/**/**/**/**",
+      "verb": "query"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "five ** segments",
+   "valid": false
+  },
+  {
+   "contract": {
+    "composite": [
+     {
+      "deny_sequence": [
+       {
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "name": "no-exfiltration"
+     }
+    ],
+    "expires": "2027-1-1T00:00:00Z",
+    "grants": [
+     {
+      "effect": "allow",
+      "resource": "crm/**",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "tools/*",
+      "verb": "invoke"
+     },
+     {
+      "effect": "deny",
+      "resource": "tools/shell",
+      "verb": "invoke"
+     },
+     {
+      "effect": "allow",
+      "resource": "secrets/*",
+      "verb": "query"
+     },
+     {
+      "effect": "allow",
+      "resource": "net/**",
+      "verb": "invoke"
+     }
+    ],
+    "id": "ctr-1",
+    "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "limits": {
+     "max_depth": 2,
+     "max_influence": "informational",
+     "max_tokens": 4000,
+     "max_tool_calls": 3
+    },
+    "not_before": "2026-10-01T00:00:00Z",
+    "roles": [
+     "analyst"
+    ],
+    "schema": "smartagency.contract/1",
+    "subject": "agent-1",
+    "version": "1.0.0"
+   },
+   "name": "time without zero padding",
+   "valid": false
+  }
+ ],
+ "description": "contract validity, envelope verification at 2026-10-26T00:00:00Z with the registry, resource matching",
+ "envelopes": [
+  {
+   "envelope": {
+    "contract": {
+     "composite": [
+      {
+       "deny_sequence": [
+        {
+         "resource": "secrets/*",
+         "verb": "query"
+        },
+        {
+         "resource": "net/**",
+         "verb": "invoke"
+        }
+       ],
+       "name": "no-exfiltration"
+      }
+     ],
+     "expires": "2027-01-01T00:00:00Z",
+     "grants": [
+      {
+       "effect": "allow",
+       "resource": "crm/**",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "tools/*",
+       "verb": "invoke"
+      },
+      {
+       "effect": "deny",
+       "resource": "tools/shell",
+       "verb": "invoke"
+      },
+      {
+       "effect": "allow",
+       "resource": "secrets/*",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "net/**",
+       "verb": "invoke"
+      }
+     ],
+     "id": "ctr-1",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "limits": {
+      "max_depth": 2,
+      "max_influence": "informational",
+      "max_tokens": 4000,
+      "max_tool_calls": 3
+     },
+     "not_before": "2026-10-01T00:00:00Z",
+     "roles": [
+      "analyst"
+     ],
+     "schema": "smartagency.contract/1",
+     "subject": "agent-1",
+     "version": "1.0.0"
+    },
+    "signature": {
+     "alg": "ed25519",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+    }
+   },
+   "name": "valid",
+   "valid": true
+  },
+  {
+   "envelope": {
+    "contract": {
+     "composite": [
+      {
+       "deny_sequence": [
+        {
+         "resource": "secrets/*",
+         "verb": "query"
+        },
+        {
+         "resource": "net/**",
+         "verb": "invoke"
+        }
+       ],
+       "name": "no-exfiltration"
+      }
+     ],
+     "expires": "2027-01-01T00:00:00Z",
+     "grants": [
+      {
+       "effect": "allow",
+       "resource": "crm/**",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "tools/*",
+       "verb": "invoke"
+      },
+      {
+       "effect": "deny",
+       "resource": "tools/shell",
+       "verb": "invoke"
+      },
+      {
+       "effect": "allow",
+       "resource": "secrets/*",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "net/**",
+       "verb": "invoke"
+      }
+     ],
+     "id": "ctr-1",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "limits": {
+      "max_depth": 2,
+      "max_influence": "informational",
+      "max_tokens": 400000,
+      "max_tool_calls": 3
+     },
+     "not_before": "2026-10-01T00:00:00Z",
+     "roles": [
+      "analyst"
+     ],
+     "schema": "smartagency.contract/1",
+     "subject": "agent-1",
+     "version": "1.0.0"
+    },
+    "signature": {
+     "alg": "ed25519",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+    }
+   },
+   "name": "contract changed after signing",
+   "valid": false
+  },
+  {
+   "envelope": {
+    "contract": {
+     "composite": [
+      {
+       "deny_sequence": [
+        {
+         "resource": "secrets/*",
+         "verb": "query"
+        },
+        {
+         "resource": "net/**",
+         "verb": "invoke"
+        }
+       ],
+       "name": "no-exfiltration"
+      }
+     ],
+     "expires": "2027-01-01T00:00:00Z",
+     "grants": [
+      {
+       "effect": "allow",
+       "resource": "crm/**",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "tools/*",
+       "verb": "invoke"
+      },
+      {
+       "effect": "deny",
+       "resource": "tools/shell",
+       "verb": "invoke"
+      },
+      {
+       "effect": "allow",
+       "resource": "secrets/*",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "net/**",
+       "verb": "invoke"
+      }
+     ],
+     "id": "ctr-1",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "limits": {
+      "max_depth": 2,
+      "max_influence": "informational",
+      "max_tokens": 4000,
+      "max_tool_calls": 3
+     },
+     "not_before": "2026-10-01T00:00:00Z",
+     "roles": [
+      "analyst"
+     ],
+     "schema": "smartagency.contract/1",
+     "subject": "agent-1",
+     "version": "1.0.0"
+    },
+    "signature": {
+     "alg": "ed25519",
+     "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+     "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+    }
+   },
+   "name": "kid differs from issuer",
+   "valid": false
+  },
+  {
+   "envelope": {
+    "contract": {
+     "composite": [
+      {
+       "deny_sequence": [
+        {
+         "resource": "secrets/*",
+         "verb": "query"
+        },
+        {
+         "resource": "net/**",
+         "verb": "invoke"
+        }
+       ],
+       "name": "no-exfiltration"
+      }
+     ],
+     "expires": "2027-01-01T00:00:00Z",
+     "grants": [
+      {
+       "effect": "allow",
+       "resource": "crm/**",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "tools/*",
+       "verb": "invoke"
+      },
+      {
+       "effect": "deny",
+       "resource": "tools/shell",
+       "verb": "invoke"
+      },
+      {
+       "effect": "allow",
+       "resource": "secrets/*",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "net/**",
+       "verb": "invoke"
+      }
+     ],
+     "id": "ctr-1",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "limits": {
+      "max_depth": 2,
+      "max_influence": "informational",
+      "max_tokens": 4000,
+      "max_tool_calls": 3
+     },
+     "not_before": "2026-10-01T00:00:00Z",
+     "roles": [
+      "analyst"
+     ],
+     "schema": "smartagency.contract/1",
+     "subject": "agent-1",
+     "version": "1.0.0"
+    },
+    "signature": {
+     "alg": "rsa-pss",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+    }
+   },
+   "name": "other algorithm",
+   "valid": false
+  },
+  {
+   "envelope": {
+    "contract": {
+     "composite": [
+      {
+       "deny_sequence": [
+        {
+         "resource": "secrets/*",
+         "verb": "query"
+        },
+        {
+         "resource": "net/**",
+         "verb": "invoke"
+        }
+       ],
+       "name": "no-exfiltration"
+      }
+     ],
+     "expires": "2027-01-01T00:00:00Z",
+     "grants": [
+      {
+       "effect": "allow",
+       "resource": "crm/**",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "tools/*",
+       "verb": "invoke"
+      },
+      {
+       "effect": "deny",
+       "resource": "tools/shell",
+       "verb": "invoke"
+      },
+      {
+       "effect": "allow",
+       "resource": "secrets/*",
+       "verb": "query"
+      },
+      {
+       "effect": "allow",
+       "resource": "net/**",
+       "verb": "invoke"
+      }
+     ],
+     "id": "ctr-1",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "limits": {
+      "max_depth": 2,
+      "max_influence": "informational",
+      "max_tokens": 4000,
+      "max_tool_calls": 3
+     },
+     "not_before": "2026-10-01T00:00:00Z",
+     "roles": [
+      "analyst"
+     ],
+     "schema": "smartagency.contract/1",
+     "subject": "agent-1",
+     "version": "1.0.0"
+    },
+    "note": "x",
+    "signature": {
+     "alg": "ed25519",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+    }
+   },
+   "name": "extra envelope field",
+   "valid": false
+  }
+ ],
+ "registry": {
+  "keys": [
+   {
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "name": "issuer A",
+    "not_before": "2026-01-01T00:00:00Z",
+    "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg"
+   },
+   {
+    "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+    "name": "issuer B",
+    "not_before": "2026-01-01T00:00:00Z",
+    "public_key": "Kay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "revoked_at": "2026-11-01T00:00:00Z"
+   }
+  ],
+  "schema": "smartagency.registry/1"
+ },
+ "resource_matches": [
+  {
+   "matches": true,
+   "pattern": "crm/**",
+   "resource": "crm"
+  },
+  {
+   "matches": true,
+   "pattern": "crm/**",
+   "resource": "crm/a/b/c"
+  },
+  {
+   "matches": true,
+   "pattern": "crm/*",
+   "resource": "crm/a"
+  },
+  {
+   "matches": false,
+   "pattern": "crm/*",
+   "resource": "crm/a/b"
+  },
+  {
+   "matches": false,
+   "pattern": "crm/*",
+   "resource": "crm"
+  },
+  {
+   "matches": true,
+   "pattern": "**",
+   "resource": "anything/at/all"
+  },
+  {
+   "matches": true,
+   "pattern": "a/**/z",
+   "resource": "a/z"
+  },
+  {
+   "matches": true,
+   "pattern": "a/**/z",
+   "resource": "a/b/c/z"
+  },
+  {
+   "matches": false,
+   "pattern": "a/**/z",
+   "resource": "a/b/c"
+  },
+  {
+   "matches": true,
+   "pattern": "a/*/c",
+   "resource": "a/b/c"
+  },
+  {
+   "matches": true,
+   "pattern": "a/b",
+   "resource": "a/b"
+  },
+  {
+   "matches": false,
+   "pattern": "a/b",
+   "resource": "a/B"
+  },
+  {
+   "matches": true,
+   "pattern": "*",
+   "resource": "a"
+  },
+  {
+   "matches": false,
+   "pattern": "*",
+   "resource": "a/b"
+  }
+ ],
+ "verify_at": "2026-10-26T00:00:00Z"
+}

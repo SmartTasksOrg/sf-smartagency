@@ -1,0 +1,30 @@
+SmartAgency
+Copyright 2026 SmartTasks Lab
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Names and affiliation
+---------------------
+
+SmartAgency is published by SmartTasksOrg. The only package names it is
+published under are those marked "registered": true in names.json.
+
+All names of other products are the property of their respective owners.
+Their use here only says what the software connects to or works with; it does
+not imply affiliation, sponsorship or endorsement.
+
+Origin
+------
+
+The design comes from a SmartSignal design council run by the maintainers
+(docs/decisions.md lists what was adopted, changed and left out).
+
+Third-party code
+----------------
+
+None is included in this repository. At run time the package uses three
+dependencies, installed separately by pip under their own licences:
+- sf-smartfabric (SmartTasksOrg), Community Forking License v2.0, aligned
+  with the IAIso framework; see its repository's LICENSE;
+- cryptography, Apache-2.0 or BSD-3-Clause;
+- jsonschema, MIT.

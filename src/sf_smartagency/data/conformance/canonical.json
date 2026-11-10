@@ -1,0 +1,59 @@
+{
+ "cases": [
+  {
+   "canonical": "{\"a\":[true,null,\"x\"],\"b\":1}",
+   "digest": "sha256:54a65415ad370228851a1da4b31b6fd42dc58b19a50d35cae759325f7388ce64",
+   "input": {
+    "a": [
+     true,
+     null,
+     "x"
+    ],
+    "b": 1
+   }
+  },
+  {
+   "canonical": "{\"a\":{\"y\":-5,\"z\":0},\"é\":\"ü\"}",
+   "digest": "sha256:a071fcce05a5d7612c26c6621f57fccca38efd3181f6eaed3dbc467a6bf58d26",
+   "input": {
+    "a": {
+     "y": -5,
+     "z": 0
+    },
+    "é": "ü"
+   }
+  },
+  {
+   "canonical": "[]",
+   "digest": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "input": []
+  },
+  {
+   "canonical": "\"line\\nbreak \"",
+   "digest": "sha256:8bf065f0c0a40195833ff2cbcf82e53ef0d693d420a2be368704a97a696a2fe7",
+   "input": "line\nbreak "
+  },
+  {
+   "canonical": "{\"n\":9007199254740991}",
+   "digest": "sha256:e1da48c6a6089f06ecb4e0a2259e658e3786b2420f52baccdf929ec6460d7b41",
+   "input": {
+    "n": 9007199254740991
+   }
+  }
+ ],
+ "description": "canonical(input) and digest(input); refused inputs raise",
+ "refused": [
+  {
+   "input": {
+    "x": 1.5
+   },
+   "name": "float"
+  },
+  {
+   "input": {
+    "n": 9007199254740992
+   },
+   "name": "integer too large"
+  }
+ ]
+}

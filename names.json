@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "repo": "SmartTasksOrg/sf-smartagency",
+  "checked_on": "2026-10-26",
+  "names": [
+    {
+      "registry": "pypi",
+      "name": "sf-smartagency",
+      "registered": true,
+      "workflow": "release.yml",
+      "note": "first release 0.1.0 is published from this repository by release.yml (tag v0.1.0, PyPI trusted publishing, provenance attestations); README 'Install' says to use a clone until it is on PyPI"
+    },
+    {
+      "registry": "pypi",
+      "name": "smartagency",
+      "registered": false,
+      "note": "not used by the family: packages are published as sf-<name>; never install this name"
+    },
+    {
+      "registry": "pypi",
+      "name": "sf-smartfabric",
+      "registered": true,
+      "note": "dependency: SmartFabric, published by SmartTasksOrg/sf-smartfabric"
+    }
+  ],
+  "third_party": {
+    "pypi": [
+      "pip",
+      "build",
+      "pytest",
+      "cryptography",
+      "jsonschema"
+    ]
+  }
+}

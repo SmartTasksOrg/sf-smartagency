@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+# secrets and keys: never commit (issuer keys are PEM files)
+.env
+.env.*
+!.env.example
+*.key
+*.p12
+*.pfx
+id_*
+secrets.env
+.npmrc
+.pypirc
+.netrc
+*.pem
+# ledgers and audit logs written by local runs
+*.jsonl
+*.jsonl.lock

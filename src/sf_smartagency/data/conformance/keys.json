@@ -1,0 +1,63 @@
+{
+ "description": "Ed25519 from 32-byte seeds: public key, kid, deterministic signature; verify cases",
+ "keys": [
+  {
+   "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+   "message_hex": "736d6172746167656e6379",
+   "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+   "seed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNqoxCg"
+  },
+  {
+   "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+   "message_hex": "736d6172746167656e6379",
+   "public_key": "Kay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+   "seed_hex": "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+   "signature": "bnjRtEy8uJg6Q2NU7XhegXjFnDJWFD6OaiPY4WPbjRT3pdHjlBczsCnJwhzaI7cgN8xJGj4a3dmO5-52AFdLDg"
+  }
+ ],
+ "verify": [
+  {
+   "message_hex": "736d6172746167656e6379",
+   "name": "valid",
+   "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNqoxCg",
+   "valid": true
+  },
+  {
+   "message_hex": "736d6172746167656e6359",
+   "name": "other message",
+   "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNqoxCg",
+   "valid": false
+  },
+  {
+   "message_hex": "736d6172746167656e6379",
+   "name": "other key",
+   "public_key": "Kay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNqoxCg",
+   "valid": false
+  },
+  {
+   "message_hex": "736d6172746167656e6379",
+   "name": "truncated signature",
+   "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNq",
+   "valid": false
+  },
+  {
+   "message_hex": "736d6172746167656e6379",
+   "name": "padding in signature",
+   "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNqoxCg==",
+   "valid": false
+  },
+  {
+   "message_hex": "736d6172746167656e6379",
+   "name": "unused bits set in the last character",
+   "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+   "signature": "UEilUnXl583xdLd3mRhy01jMnhrPkGtwIOyMuMi4eR4T173PH8KIS94aFM6bpH0bz_-t3F8HjEr-JRrXNqoxCh",
+   "valid": false
+  }
+ ]
+}

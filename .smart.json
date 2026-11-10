@@ -1,0 +1,11 @@
+{
+  "family": "Smart*",
+  "tool": "SmartAgency",
+  "version": "0.1.0",
+  "iaiso_section": null,
+  "iaiso_section_note": "not assigned yet: the IAIso section labels are an open decision of the maintainers",
+  "share_mode": "public",
+  "builds_on": ["SmartFabric"],
+  "cross_promote": ["SmartFabric", "SmartGate", "SmartSwitch", "SmartWatch", "SmartDelegate"],
+  "links": {"iaiso": "https://iaiso.org", "cloud": "https://smarttasks.cloud"}
+}

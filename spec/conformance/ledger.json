@@ -1,0 +1,868 @@
+{
+ "description": "a valid ledger and its statuses; invalid ledgers (append each entry in order; one must fail)",
+ "invalid": [
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+    }
+   ],
+   "name": "entry removed",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+     "reason": "incident 7",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "Rk2RTT-EsLBnzOlcsmyOODnHm8Bjwon6C2kB0JBdVoyUzuwAxlrcl-Dz6ejwvla_VRdPtnECnrqzkCi-jgRwBg"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+    }
+   ],
+   "name": "entries reordered",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+     "reason": "nothing happened",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "Rk2RTT-EsLBnzOlcsmyOODnHm8Bjwon6C2kB0JBdVoyUzuwAxlrcl-Dz6ejwvla_VRdPtnECnrqzkCi-jgRwBg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+    }
+   ],
+   "name": "reason edited",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1,
+      2
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "AlV_VbS11RPQexVqKnGedBJFdPQLzO7ZmKOW9YNiJAYs9wBa8mGKFP_vItiBnARwStu8HirNd0mxeIH7134kDQ"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+     "reason": "incident 7",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "Rk2RTT-EsLBnzOlcsmyOODnHm8Bjwon6C2kB0JBdVoyUzuwAxlrcl-Dz6ejwvla_VRdPtnECnrqzkCi-jgRwBg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+    }
+   ],
+   "name": "re-signed edit without fixing the chain",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+     "reason": "incident 7",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "Rk2RTT-EsLBnzOlcsmyOODnHm8Bjwon6C2kB0JBdVoyUzuwAxlrcl-Dz6ejwvla_VRdPtnECnrqzkCi-jgRwBg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:d28c7a6a03034a1baec7720677cf72339bb02c9611584825206eeac6f6d6ce9e",
+     "schema": "smartagency.ledger/1",
+     "seq": 6,
+     "sig": "YO034E42p0AtDwfvoMzkWg5v5xJ7C9k8ndb3IbHuN2nVRvl0NhUH7N_z4YW9aspEIbjY4IuYOgADCQ9QePpfDw"
+    }
+   ],
+   "name": "event after revoke",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "L1_xLYzrJyvcDoFuL-EZmqyV_wG0GCLRuTVRyfFQe7Eovm8bHqr12grMqnRn8OgzE1l5fMVyKZmC5ipGW03_DQ"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:f34ce5bd0fd83380ba79191a1e9762e477bd968817ce8dc808007c546825e11f",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "sQ8GGMYJKU4Tb6m8likwjp62FwD6SO4t7Drq10abY-8wwSWkbHX3Cc79ie5GfevgHYxeHhsMzaFgoB92D_3WBA"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:9837da69786743c6ba472ac38f8663992d3895ede7dff9dd66fa4d3784586e89",
+     "reason": "incident 7",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "7P9p1sQEjZUoLiQ5yefhI02JH_qrDx0dOo4kGT9MazCpEz4WKDaaIfo_H1Rl5tt7aBpvk6J_ZRnWVIVgIv6sCw"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:91b02c95428a9be816a6fcfd30fa6db969f49fe328afae9b0f8bda888df528a6",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "bNggODMg6ALJlYMZNxHgZUM16d5GOscDpZa1BVRTvv9kCZG7lne1S6GZ5rmw9Zw-rkWGswpfMySdn0CpGZtnDg"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:c984287fae377e11883f457594438c40439b1555c1ce96734f75f324e15bb922",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "usGjadCz82l1bvxNwvBBJNHM_7kSpuDw34PqeHfKWC_hjQMMkZgiJBJLeMUQyKfuLQHjg7zjQRFMWi8KKBbpCw",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:42acd43a3f6df9b0aa3f9782eb463ab9f7fa6df6c96e2e0406635eb26e217854",
+     "schema": "smartagency.ledger/1",
+     "seq": 6,
+     "sig": "h7MwCn3P98D00Ii6b8KRmxpwBWCYgHCJrbO2X-N5PI7cAOzV88CJkPzo0sd6glbgkDyOVDnqCz8J_LrTCgOYAQ"
+    }
+   ],
+   "name": "issued twice",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "gXoJoUZ2D-XoxWSc_kBr8BCSDqft6nOf9FLmbeixFFhEAr_pRMXRh4_UFWMAidj7eIIBeWbAy7qzEJz0FEi8Ag"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:f404d9260596eac3144054e7855a8418f7efa7460c5d5d2d89db87e4b208facd",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "8dApWeZG0R7A8Gatc_y7kzWHzkE79-5-68rBJYww-5a2qF2JLjmThS8OPFyNxB5-jj7b51NRKOM5pTNVLvBnAQ",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:a869f765d5971e63052634f035257d9ea0b937eaa4194269a0342006cb5ec07d",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "-GXQPj1hVOW6gHv-6hu7NWPxlSKtVG5_bYS_pqJRcAvEk_tlvk4Kv9nsZ1mIyZx1G65vsVeiK2dQCTo959a8BA"
+    }
+   ],
+   "name": "resume without suspend",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T08:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "p7n3tiBLnik99Wmp9rKH4Cs4Mrya4Q4qkvDm5MrHMnk5At8M5c5S4xcZP_ROOfeB-8Nfz4x8kQpUSVU_n1hzAA"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ca7befb8567172147dfc7eaa9869bf5619eb6b9e955ec6b984eb17252fcc5ac3",
+     "reason": "incident 7",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "-oIuRVS7ZJQaFDreG0bViSorQG5ul78LbDIYVVjPx-2AnwwQdoR__WbIA7qHDeJkRV5kFyksFdQuRCGvDsW9Cg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:8dcd2636f0e512d6915f9f2802cb905bb6915ee9d7bc89ac3c844f3d21479243",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "P6KXNdnoyIubY9cSFKW3goj0KUu7agmffZxCBlH16N6DVp4ea24MKrlbWDTBKs-0HHwR89KRA_wPgita8aG0AA"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:1aa831c2ce7023d5b0c0fb1c9780fb743dd84614793d63685432295d7beb84af",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "eV5wnFb4xkSo1P02l220jASTv505nMIK8jvASUk8ga2NSJadbtXG3csPfQ705Y-KZiXGGb9If3j1gn_wfTVjCg",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:94a9dcd6f07a9acdaec479814f221181de9568f23d271f8df237a4eb7f99dcb8",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "KNTW2qIuLbl3wUUhqeyosj1p9fuxdzZ8M2bJ-_XeRRpuwL_Dg1nrdJ8IfPin7yMzFmRJ5WiBBRKu_Slh8GZQBg"
+    }
+   ],
+   "name": "time goes backwards",
+   "valid": false
+  },
+  {
+   "entries": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "JqWPV6h8THsvmkBFW5SB57y4XQDLaym-nW2y7B0wgVr76dG-VBz9hsrtF61he3OSBS0MvfYy4PAxOYKe7EJoDA"
+    },
+    {
+     "at": "2026-10-26T09:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      1
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+    },
+    {
+     "at": "2026-10-26T09:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+     "reason": "incident 7",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "Rk2RTT-EsLBnzOlcsmyOODnHm8Bjwon6C2kB0JBdVoyUzuwAxlrcl-Dz6ejwvla_VRdPtnECnrqzkCi-jgRwBg"
+    },
+    {
+     "at": "2026-10-26T09:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+    },
+    {
+     "at": "2026-10-26T09:04:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+     "supersedes": "ctr-1"
+    },
+    {
+     "at": "2026-10-26T09:05:00Z",
+     "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "contract_id": "ctr-2",
+     "event": "revoke",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+     "schema": "smartagency.ledger/1",
+     "seq": 5,
+     "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+    }
+   ],
+   "name": "signed by a key the registry does not hold",
+   "valid": false
+  }
+ ],
+ "registry": {
+  "keys": [
+   {
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "name": "issuer A",
+    "not_before": "2026-01-01T00:00:00Z",
+    "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg"
+   },
+   {
+    "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+    "name": "issuer B",
+    "not_before": "2026-01-01T00:00:00Z",
+    "public_key": "Kay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "revoked_at": "2026-11-01T00:00:00Z"
+   }
+  ],
+  "schema": "smartagency.registry/1"
+ },
+ "valid": {
+  "entries": [
+   {
+    "at": "2026-10-26T09:00:00Z",
+    "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+    "contract_id": "ctr-1",
+    "event": "issue",
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "schema": "smartagency.ledger/1",
+    "seq": 0,
+    "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+   },
+   {
+    "at": "2026-10-26T09:01:00Z",
+    "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+    "contract_id": "ctr-1",
+    "event": "revoke_grants",
+    "grants": [
+     1
+    ],
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+    "schema": "smartagency.ledger/1",
+    "seq": 1,
+    "sig": "t2fG41TR7CBBboetKvd42qoLDjSEFQEDBitOVX8GGv9cR80dganAJWC3lPfFloGvn1kBxZ8nJycfnNLJfyVJAg"
+   },
+   {
+    "at": "2026-10-26T09:02:00Z",
+    "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+    "contract_id": "ctr-1",
+    "event": "suspend",
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "prev": "sha256:539e308f9ca34058f507df1a97291a2e64ee44de98f2080271fee5bb7bde693d",
+    "reason": "incident 7",
+    "schema": "smartagency.ledger/1",
+    "seq": 2,
+    "sig": "Rk2RTT-EsLBnzOlcsmyOODnHm8Bjwon6C2kB0JBdVoyUzuwAxlrcl-Dz6ejwvla_VRdPtnECnrqzkCi-jgRwBg"
+   },
+   {
+    "at": "2026-10-26T09:03:00Z",
+    "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+    "contract_id": "ctr-1",
+    "event": "resume",
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "prev": "sha256:ab0e825a80b2c2d9d74837993ec529c431ecb1e4fae30cab769beac71bd91dea",
+    "schema": "smartagency.ledger/1",
+    "seq": 3,
+    "sig": "Of8_Rke03WbmY1T5RkZfjFlbsVjDFa7qGplqqili_B35fqeayreTiWeJQ0Qe7fAoE2m5QVD-rfg8PE1n77_GDQ"
+   },
+   {
+    "at": "2026-10-26T09:04:00Z",
+    "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+    "contract_id": "ctr-2",
+    "event": "issue",
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "prev": "sha256:2faad07c75f491ba9451d4a0d3622b54ba7ba13e6ea7f0ebe29e159c635f8f39",
+    "schema": "smartagency.ledger/1",
+    "seq": 4,
+    "sig": "t6ESIjakQe5Jtr9CUl1zOOVDtZpqKyqIK7pcXtaDkXraJjZigr1u_beDf4heFxUWOPCEPVDXvjkUfa_g3SqqDA",
+    "supersedes": "ctr-1"
+   },
+   {
+    "at": "2026-10-26T09:05:00Z",
+    "contract_digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+    "contract_id": "ctr-2",
+    "event": "revoke",
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "prev": "sha256:307811e91897f73e347eb87b02bc6dfdc77ad0c40c7ad9f5315d2173fbb7fd5e",
+    "schema": "smartagency.ledger/1",
+    "seq": 5,
+    "sig": "-22bJrNTCpt8hgNjMek4KWJrhblNMoZnPSzdG29cZm_ipORHlM3F2Juaxc7P1dJYC_OaTzULZ7na5nx9TTN3CQ"
+   }
+  ],
+  "statuses": [
+   {
+    "at": "2026-10-26T08:59:59Z",
+    "id": "ctr-1",
+    "status": {
+     "digest": null,
+     "issuer": null,
+     "revoked_grants": [],
+     "status": "unknown"
+    }
+   },
+   {
+    "at": "2026-10-26T09:00:00Z",
+    "id": "ctr-1",
+    "status": {
+     "digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "revoked_grants": [],
+     "status": "active"
+    }
+   },
+   {
+    "at": "2026-10-26T09:02:30Z",
+    "id": "ctr-1",
+    "status": {
+     "digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "revoked_grants": [
+      1
+     ],
+     "status": "suspended"
+    }
+   },
+   {
+    "at": "2026-10-26T09:03:00Z",
+    "id": "ctr-1",
+    "status": {
+     "digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "revoked_grants": [
+      1
+     ],
+     "status": "active"
+    }
+   },
+   {
+    "at": "2026-10-26T09:10:00Z",
+    "id": "ctr-1",
+    "status": {
+     "digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "revoked_grants": [
+      1
+     ],
+     "status": "superseded"
+    }
+   },
+   {
+    "at": "2026-10-26T09:10:00Z",
+    "id": "ctr-2",
+    "status": {
+     "digest": "sha256:8eeafc34d501181710ab8c32f20c665ce7a9a8e2cf2f0b65edbedf34b1de1c63",
+     "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "revoked_grants": [],
+     "status": "revoked"
+    }
+   },
+   {
+    "at": "2026-10-26T09:10:00Z",
+    "id": "ctr-9",
+    "status": {
+     "digest": null,
+     "issuer": null,
+     "revoked_grants": [],
+     "status": "unknown"
+    }
+   }
+  ]
+ }
+}

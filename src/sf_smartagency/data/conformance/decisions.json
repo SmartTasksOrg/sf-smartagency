@@ -1,0 +1,2076 @@
+{
+ "description": "for each scenario: build a registry from 'registry', a ledger by appending 'ledger', a monitor with each signed contract added at 2026-10-26T00:00:00Z, then run the steps in order (check with the given fields, or reset); each decision must equal 'expect'",
+ "registry": {
+  "keys": [
+   {
+    "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+    "name": "issuer A",
+    "not_before": "2026-01-01T00:00:00Z",
+    "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg"
+   },
+   {
+    "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+    "name": "issuer B",
+    "not_before": "2026-01-01T00:00:00Z",
+    "public_key": "Kay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "revoked_at": "2026-11-01T00:00:00Z"
+   }
+  ],
+  "schema": "smartagency.registry/1"
+ },
+ "scenarios": [
+  {
+   "contracts": [
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-1",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+     }
+    }
+   ],
+   "ledger": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    }
+   ],
+   "name": "grants, limits, influence, defaults",
+   "steps": [
+    {
+     "at": "2026-10-26T10:00:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/accounts/42",
+     "subject": "agent-1",
+     "tokens": 500,
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:01:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "denied-by-grant"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "tools/shell",
+     "subject": "agent-1",
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:02:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "limit-tool-calls"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tool_calls": 4,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:03:00Z",
+     "depth": 3,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "limit-tokens",
+       "limit-depth"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 5000,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:04:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-matching-grant"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "hr/salaries",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:05:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "limit-influence"
+      ],
+      "zone": "nominal"
+     },
+     "influence": "persuasive",
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:06:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-active-contract"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/x",
+     "subject": "agent-2",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:07:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/x",
+     "subject": "agent-1",
+     "verb": "teleport"
+    },
+    {
+     "at": "2026-10-26T10:08:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/*",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:09:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/x",
+     "subject": "agent-1",
+     "tokens": -1,
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:10:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/../hr",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:11:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a%2Fb",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:12:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "x-acme-DELETE"
+    },
+    {
+     "at": "2026-10-26T10:13:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "invalid-action"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "bad\tsession",
+     "subject": "agent-1",
+     "verb": "query"
+    }
+   ]
+  },
+  {
+   "contracts": [
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-1",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+     }
+    }
+   ],
+   "ledger": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    }
+   ],
+   "name": "composite sequences per session",
+   "steps": [
+    {
+     "at": "2026-10-26T10:00:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "secrets/db",
+     "session": "s1",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:01:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s1",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:02:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "composite:no-exfiltration"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "net/upload",
+     "session": "s1",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:03:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "net/upload",
+     "session": "s2",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:04:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "net/upload",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:05:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "secrets/key",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:01Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:02Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:03Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:04Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:05Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:06Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:07Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:08Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:09Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:10Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:11Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:12Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:13Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:14Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:15Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:16Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:17Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:18Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:19Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:20Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:21Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:22Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:23Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:24Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:25Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:26Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:27Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:28Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:06:29Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:07:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "composite:no-exfiltration"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "net/upload",
+     "session": "s3",
+     "subject": "agent-1",
+     "verb": "invoke"
+    }
+   ]
+  },
+  {
+   "contracts": [
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-1",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+     }
+    }
+   ],
+   "ledger": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    }
+   ],
+   "name": "pressure: escalation, release, lock, reset",
+   "steps": [
+    {
+     "at": "2026-10-26T10:00:00Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.125",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:01Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.25",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:02Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.375",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:03Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.5",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:04Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.625",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:05Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.75",
+      "reasons": [],
+      "zone": "warning"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:06Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "escalate",
+      "pressure": "0.875",
+      "reasons": [
+       "pressure-escalation"
+      ],
+      "zone": "escalation"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:00:07Z",
+     "depth": 1,
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "pressure-release"
+      ],
+      "zone": "release"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tokens": 1000,
+     "tool_calls": 1,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:01:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "pressure-locked"
+      ],
+      "zone": "release"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "reset": "agent-1"
+    },
+    {
+     "at": "2026-10-26T10:02:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    }
+   ]
+  },
+  {
+   "contracts": [
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-1",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+     }
+    },
+    {
+     "contract": {
+      "composite": [],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "deny",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-strict",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 0,
+       "max_influence": "inert",
+       "max_tokens": 100,
+       "max_tool_calls": 1,
+       "pressure": {
+        "escalation_threshold": "0.3",
+        "release_threshold": "0.5"
+       }
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "hABcIdPIrGfaFtxXKia4TnNdEjH5oldsWaSttOoo2ZoboWzVZU4O4GPpCMRd7nz2yCPsqrlcZLibDE_4kURnDA"
+     }
+    }
+   ],
+   "ledger": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:d495cdb3a5b1f62abb17741d8ba685a55c120e282a502eb5e5f2ea2c644555e1",
+     "contract_id": "ctr-strict",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "OjAE_LdUUXxBu7WznVVlA3ABCwQ9wJyfavtA6jNGg2Te3P8NwgKbvYkM8zz6nxvZ51cO963k_NsGQgieqNUIBA"
+    }
+   ],
+   "name": "two contracts: deny overrides, most restrictive limits",
+   "steps": [
+    {
+     "at": "2026-10-26T10:00:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-strict"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "denied-by-grant"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "net/search",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:01:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1",
+       "ctr-strict"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "limit-tokens",
+       "limit-influence"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "tokens": 500,
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:02:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1",
+       "ctr-strict"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "limit-influence"
+      ],
+      "zone": "nominal"
+     },
+     "influence": "informational",
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "tokens": 50,
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:03:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1",
+       "ctr-strict"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "influence": "inert",
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "tokens": 50,
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:04:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0.22",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tool_calls": 3,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:05:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "escalate",
+      "pressure": "0.44",
+      "reasons": [
+       "pressure-escalation"
+      ],
+      "zone": "escalation"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tool_calls": 3,
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:06:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "pressure-release"
+      ],
+      "zone": "release"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "tool_calls": 3,
+     "verb": "invoke"
+    }
+   ]
+  },
+  {
+   "contracts": [
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-1",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "znhnmIa0e-1Zg1mDscdZj_WiaJqsuR9TiCEj-Lsau_4AOCQakwnEln31aI4r3u-97qixYUMp-M7GmJtxqa9_CQ"
+     }
+    },
+    {
+     "contract": {
+      "composite": [],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "hr/**",
+        "verb": "query"
+       }
+      ],
+      "id": "ctr-2",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "supersedes": "ctr-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "VirPo56W8pBTX7UfT217cpc4XFPk_5NpK5qPfU5l87JBBmquWPMns8gHEpKktXQQNsZYUTVFkUkL0l521nqaDg"
+     }
+    }
+   ],
+   "ledger": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "vYH4ZFYu28aaHQxKE7UH6up3e3nGuY_B14Y7vEbu-q6R-mt3H2Id5ImTqm3SOfBshELR24u8O7Qfz7-_P3IMBw"
+    },
+    {
+     "at": "2026-10-26T10:01:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "suspend",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:681d507b8c0a6af51415de3912c5c9f104ac4dd264348f82c1c6e4ad0a5f8d97",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "G56xAyaKJBXaoPdr-jUrlDBDx29FozBLfgtw1wZyx5MbKgoLzQMnlqLJ3rAC1YM5iG5DDlPsPPD8eue87lxRDA"
+    },
+    {
+     "at": "2026-10-26T10:02:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "resume",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:9f06a20e08d5ed2b47577ae656819de76042a43cfc5db0aa4b4aa9539b0b995b",
+     "schema": "smartagency.ledger/1",
+     "seq": 2,
+     "sig": "eJAcwdBnNZrlOvtfukaJ28M8kurLi8bKIniqE2cHusVT30LT9xGT4-WoeW-EQEBnfWKb0dIcsIlw4-j-mnpfBw"
+    },
+    {
+     "at": "2026-10-26T10:03:00Z",
+     "contract_digest": "sha256:88b28e9740b6f0ccceab8b0b132d8504054986fa9a0066c3e88da96282d90645",
+     "contract_id": "ctr-1",
+     "event": "revoke_grants",
+     "grants": [
+      0
+     ],
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:4490418bbe5cc7bda164ab7d63d7536fa2f98aff1157c672844d588d63b2afec",
+     "schema": "smartagency.ledger/1",
+     "seq": 3,
+     "sig": "9-dyxuaSkelkb9P82lPpv3YxZjJ3CPtB_r8V4WJVqsaIs7QLdP5J3qVrk5kJuTOMHZ87csWZA7f1W1Edcl8HAA"
+    },
+    {
+     "at": "2026-10-26T10:04:00Z",
+     "contract_digest": "sha256:09bc977ec1e8dc932e7c36008ad18af9cc70c111886d4859f421d5152b78e246",
+     "contract_id": "ctr-2",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:833de9e89c02e9d4a51cea197fc14536b27b9d32ad89d4d168bd77d1c3c0e758",
+     "schema": "smartagency.ledger/1",
+     "seq": 4,
+     "sig": "OVAGRdT2cyOAzdQU6u0pe3wLgg22nghdju7ZBK-ahV0qXP3ZeGFeUpFIXv0hM-iZllXsw8R8eWSq-2dWUiAjDg",
+     "supersedes": "ctr-1"
+    }
+   ],
+   "name": "ledger: not issued, suspend, partial revoke, revoke, supersede",
+   "steps": [
+    {
+     "at": "2026-10-26T08:00:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-active-contract"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:00:30Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:01:30Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-active-contract"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:02:30Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:03:30Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-matching-grant"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-10-26T10:03:30Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-1"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:04:30Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-2"
+      ],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-matching-grant"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "tools/search",
+     "subject": "agent-1",
+     "verb": "invoke"
+    },
+    {
+     "at": "2026-10-26T10:04:30Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-2"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "hr/a",
+     "subject": "agent-1",
+     "verb": "query"
+    }
+   ]
+  },
+  {
+   "contracts": [
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-b",
+      "issuer": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-10-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+      "sig": "Nzs37iOhBT43N8tTZCmqTHBGl3rRdayr4v-7rvMPkO1fI-T7HIA8-v3wttLHvjFXagUbuaPpPRLydU-SeHGpCw"
+     }
+    },
+    {
+     "contract": {
+      "composite": [
+       {
+        "deny_sequence": [
+         {
+          "resource": "secrets/*",
+          "verb": "query"
+         },
+         {
+          "resource": "net/**",
+          "verb": "invoke"
+         }
+        ],
+        "name": "no-exfiltration"
+       }
+      ],
+      "expires": "2027-01-01T00:00:00Z",
+      "grants": [
+       {
+        "effect": "allow",
+        "resource": "crm/**",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "tools/*",
+        "verb": "invoke"
+       },
+       {
+        "effect": "deny",
+        "resource": "tools/shell",
+        "verb": "invoke"
+       },
+       {
+        "effect": "allow",
+        "resource": "secrets/*",
+        "verb": "query"
+       },
+       {
+        "effect": "allow",
+        "resource": "net/**",
+        "verb": "invoke"
+       }
+      ],
+      "id": "ctr-late",
+      "issuer": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "limits": {
+       "max_depth": 2,
+       "max_influence": "informational",
+       "max_tokens": 4000,
+       "max_tool_calls": 3
+      },
+      "not_before": "2026-12-01T00:00:00Z",
+      "roles": [
+       "analyst"
+      ],
+      "schema": "smartagency.contract/1",
+      "subject": "agent-1",
+      "version": "1.0.0"
+     },
+     "signature": {
+      "alg": "ed25519",
+      "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+      "sig": "qKj9RVRUZ2x2wxdWaDFHDyqFedNd3N8x6yhqHzQdxeV-HxRM8ySiL9J9zh7jGMNP7FXsdrS-lwIcQyNTFA0VCQ"
+     }
+    }
+   ],
+   "ledger": [
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:31bc8a607d0aebf14ba3826cffec6e0d876834d8b4777087e616d0134e6b717b",
+     "contract_id": "ctr-b",
+     "event": "issue",
+     "kid": "ed25519:24f6ed6acbfe1009c030d7ca567c33ca",
+     "prev": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+     "schema": "smartagency.ledger/1",
+     "seq": 0,
+     "sig": "-7twq-zmENELtW-256s5nO3O-L5Bb4BAW1hmmxHcSwqVteqWGg5fbQeCo5uIeYnZv4Fif5oBF4mvZQGsaVT4DA"
+    },
+    {
+     "at": "2026-10-26T09:00:00Z",
+     "contract_digest": "sha256:2869c32a353038f56db3f1fc38e60356b463adfae98025da4d38070cad17fb39",
+     "contract_id": "ctr-late",
+     "event": "issue",
+     "kid": "ed25519:56475aa75463474c0285df5dbf2bcab7",
+     "prev": "sha256:8a1ae9f335a807f62a7ba5851dec20d5d247b2d9e0af0e37240723b958e9c584",
+     "schema": "smartagency.ledger/1",
+     "seq": 1,
+     "sig": "Vr25qlMPqHfLkXjz6YWqVewbT9PUdG0cx81RgkGUSyy2iRnSCMA_f7NVoxBJi1nC1g-9DV6mNbFXDJNBLfPrBQ"
+    }
+   ],
+   "name": "issuer key revoked, contract window",
+   "steps": [
+    {
+     "at": "2026-10-26T10:00:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-b"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-11-01T00:00:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-active-contract"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2026-12-01T00:00:00Z",
+     "expect": {
+      "contract_ids": [
+       "ctr-late"
+      ],
+      "outcome": "allow",
+      "pressure": "0",
+      "reasons": [],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    },
+    {
+     "at": "2027-01-01T00:00:00Z",
+     "expect": {
+      "contract_ids": [],
+      "outcome": "deny",
+      "pressure": "0",
+      "reasons": [
+       "no-active-contract"
+      ],
+      "zone": "nominal"
+     },
+     "resource": "crm/a",
+     "subject": "agent-1",
+     "verb": "query"
+    }
+   ]
+  }
+ ]
+}

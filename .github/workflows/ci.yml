@@ -1,0 +1,56 @@
+# CI: on every push to main and every pull request.
+#   test           Python tests on 3.10, 3.12 and 3.13, vectors up to date, the demo (gates merges)
+#   install-lines  no document names a package the maintainers do not hold (gates merges)
+# Actions are pinned to commits (comment: tag, date read). Only GitHub-owned actions are used.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1, read 2026-10-08
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0, read 2026-10-08
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e . "pytest==8.3.3"
+      - name: Tests
+        run: python -m pytest -q
+      - name: Vectors are what the generator writes
+        run: python spec/tools/make_vectors.py --check
+      - name: Demo and the bundled vectors
+        run: |
+          sf-smartagency demo
+          sf-smartagency vectors
+
+  install-lines:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1, read 2026-10-08
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0, read 2026-10-08
+        with:
+          python-version: '3.12'
+      - name: No document names a package the maintainers do not hold
+        run: python scripts/check_install_lines.py

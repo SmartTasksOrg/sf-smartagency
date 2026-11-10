@@ -1,0 +1,64 @@
+{
+ "schema": "smartagency.contract/1",
+ "id": "ctr-research-1",
+ "version": "1.0.0",
+ "issuer": "ed25519:00000000000000000000000000000000",
+ "subject": "iaiso://agent/research-1",
+ "roles": [
+  "researcher"
+ ],
+ "grants": [
+  {
+   "verb": "query",
+   "resource": "crm/**",
+   "effect": "allow"
+  },
+  {
+   "verb": "query",
+   "resource": "secrets/**",
+   "effect": "allow"
+  },
+  {
+   "verb": "invoke",
+   "resource": "tools/search",
+   "effect": "allow"
+  },
+  {
+   "verb": "invoke",
+   "resource": "net/**",
+   "effect": "allow"
+  },
+  {
+   "verb": "invoke",
+   "resource": "tools/shell",
+   "effect": "deny"
+  }
+ ],
+ "limits": {
+  "max_tokens": 4000,
+  "max_tool_calls": 3,
+  "max_depth": 2,
+  "max_influence": "informational",
+  "pressure": {
+   "escalation_threshold": "0.85",
+   "release_threshold": "0.95"
+  }
+ },
+ "composite": [
+  {
+   "name": "no-exfiltration",
+   "deny_sequence": [
+    {
+     "verb": "query",
+     "resource": "secrets/**"
+    },
+    {
+     "verb": "invoke",
+     "resource": "net/**"
+    }
+   ]
+  }
+ ],
+ "not_before": "2026-10-26T00:00:00Z",
+ "expires": "2027-01-01T00:00:00Z"
+}
